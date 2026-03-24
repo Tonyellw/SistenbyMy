@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    background: #050505;
+    color: #ffffff;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #050505; }
+  ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #ff004066; }
+
+  ::selection { background: #ff004066; color: #fff; }
+}
+
+@layer components {
+  /* ── Neon Glow Effects ────────────────────────────── */
+  .neon-text-red {
+    color: #ff0040;
+    text-shadow: 0 0 7px #ff004088, 0 0 20px #ff004044, 0 0 40px #ff004022;
+  }
+  .neon-text-blue {
+    color: #00d4ff;
+    text-shadow: 0 0 7px #00d4ff88, 0 0 20px #00d4ff44, 0 0 40px #00d4ff22;
+  }
+  .neon-border-red {
+    border-color: #ff004066;
+    box-shadow: 0 0 10px #ff004033, inset 0 0 10px #ff004011;
+  }
+  .neon-border-blue {
+    border-color: #00d4ff66;
+    box-shadow: 0 0 10px #00d4ff33, inset 0 0 10px #00d4ff11;
+  }
+  .neon-card {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    transition: all 0.3s ease;
+  }
+  .neon-card:hover {
+    border-color: #ff004044;
+    box-shadow: 0 0 20px #ff004022, 0 0 40px #ff004011;
+  }
+  .neon-btn-red {
+    background: linear-gradient(135deg, #ff0040, #cc0033);
+    box-shadow: 0 0 15px #ff004066, 0 0 30px #ff004022;
+    transition: all 0.2s ease;
+  }
+  .neon-btn-red:hover {
+    box-shadow: 0 0 25px #ff004088, 0 0 50px #ff004044;
+    transform: translateY(-1px);
+  }
+  .neon-btn-blue {
+    background: linear-gradient(135deg, #00d4ff, #00a0cc);
+    color: #050505;
+    box-shadow: 0 0 15px #00d4ff66, 0 0 30px #00d4ff22;
+    transition: all 0.2s ease;
+  }
+  .neon-btn-blue:hover {
+    box-shadow: 0 0 25px #00d4ff88, 0 0 50px #00d4ff44;
+    transform: translateY(-1px);
+  }
+
+  /* ── Pulse ring ────────────────────────────────────── */
+  .pulse-ring {
+    position: relative;
+  }
+  .pulse-ring::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    border: 2px solid #ff004044;
+    animation: pulse-ring 2s ease-in-out infinite;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { opacity: 0; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.02); }
+  }
+
+  /* ── Grid lines background ─────────────────────────── */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 0, 64, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 0, 64, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* ── Scanline effect ───────────────────────────────── */
+  .scanlines::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.03) 0px,
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+}
+
+@layer utilities {
+  .text-gradient-neon {
+    background: linear-gradient(135deg, #ff0040, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ── Input Range ────────────────────────────────────── */
+input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
+input[type="range"]::-webkit-slider-track { height: 6px; background: #1a1a1a; border-radius: 3px; }
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+  background: #ff0040; cursor: pointer; margin-top: -7px;
+  box-shadow: 0 0 10px #ff004066;
+}
+input[type="range"]::-moz-range-track { height: 6px; background: #1a1a1a; border-radius: 3px; }
+input[type="range"]::-moz-range-thumb {
+  width: 20px; height: 20px; border-radius: 50%; background: #ff0040;
+  cursor: pointer; border: none; box-shadow: 0 0 10px #ff004066;
+}
